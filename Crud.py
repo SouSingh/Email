@@ -56,7 +56,7 @@ from itertools import chain
 tables = [table[0] for table in cursor.fetchall()]
 # Streamlit app
 st.sidebar.title("Select Table")
-selected_table = st.sidebar.selectbox("Table", [name.replace("_", " ").title() for name in table_names])
+selected_table = st.sidebar.selectbox("Table", [name.replace("_", " ").title() for name in tables])
 
 # CRUD operations based on the selected table
 if selected_table:
