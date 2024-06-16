@@ -36,7 +36,7 @@ hour = st.sidebar.slider("Hour", 0, 23, 12)
 minute = st.sidebar.slider("Minute", 0, 59, 0)
 second = st.sidebar.slider("Second", 0, 59, 0)
 
-days_before = st.number_input("Enter the number of Days Before the Reminder")
+days_before = st.sidebar.number_input("Enter the number of Days Before the Reminder")
 
 
 # Create a time object from the user's input
