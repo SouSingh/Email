@@ -86,7 +86,13 @@ selected_table = st.sidebar.selectbox("Table", tables)
 
 # CRUD operations based on the selected table
 if selected_table:
-    st.title(' '.join(word.capitalize() for word in selected_table.split('_')))
+    gone  = ' '.join(word.capitalize() for word in selected_table.split('_'))
+    if gone == 'Documents Received Tobuyer Bysupplier':
+        gone = "Documents Received from Supplier"
+    if gone == 'Documents Received Tosupplier Bybuyer':
+        gone = "Documents Received from Buyer"
+    st.title(gone)
+    
 
     # Read
     st.subheader("Read Data")
