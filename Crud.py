@@ -40,7 +40,7 @@ second = st.sidebar.slider("Second", 0, 59, 0)
 user_time = time(hour, minute, second)
 if st.sidebar.button("Send Time"):
     pas = user_time.strftime('%H:%M:%S')
-    base_url = "http://localhost:8000/time/"
+    base_url = "http://107.23.25.147:8000/time/"
     response = call_fastapi_endpoints(base_url, pas)
 
 
