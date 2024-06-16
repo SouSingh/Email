@@ -1,0 +1,9 @@
+{
+"category": "change",
+"change": {
+"change_type": "delivery_date",
+"changed_date": "2024-07-02",
+"changed_qty": "non"
+},
+"PO": "PO004"
+}

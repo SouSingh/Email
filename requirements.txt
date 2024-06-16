@@ -1,0 +1,11 @@
+crewai==0.30.11
+Flask==3.0.3
+langchain_community==0.2.4
+langchain_groq==0.1.5
+llama_index==0.10.44
+msal==1.28.0
+mysql_connector_repackaged==0.3.1
+pendulum==3.0.0
+python-dotenv==1.0.1
+Requests==2.32.3
+transformers==4.41.1

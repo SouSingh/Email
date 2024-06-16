@@ -1,0 +1,50 @@
+/* Global Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+}
+
+/* Sidebar Styles */
+.css-1aumxhk {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.css-1aumxhk label {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Main Content Styles */
+.main .block-container {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.main h1, .main h2 {
+    color: #1a73e8;
+}
+
+.main th, .main td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Button Styles */
+.css-16tn5zk {
+    background-color: #1a73e8;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.css-16tn5zk:hover {
+    background-color: #1a6dd8;
+}

@@ -1,0 +1,9 @@
+{
+"Is_Supplier_Email" : "True",
+"email" : {
+"from" : "Yash V <yash@easeworkai.com>",
+"to" : "",
+"subject" : "Acceptance of purchase order PO004 and change of delivery date",
+"body" : "Dear Yash\nPlease update the purchase order number delivery date to July 2nd 2024.\nThank you"
+}
+}
