@@ -47,6 +47,7 @@ def call_fastapi_endpoints(base_url, time_string, days_before):
     return response.json()
 
 st.sidebar.image(add_logo(logo_path="logo.png", width=190, height=60, radius=15))
+st.sidebar.markdown("## Automation Admin Portal")
 st.sidebar.subheader("Select Time")
 
 # Get the user's time input
@@ -82,7 +83,7 @@ tables = [table[0] for table in cursor.fetchall()]
 # Streamlit app
 st.sidebar.title("Select Table")
 selected_table = st.sidebar.selectbox("Table", tables)
-st.sidebar.markdown("Automation Admin Portal")
+
 # CRUD operations based on the selected table
 if selected_table:
     st.title(' '.join(word.capitalize() for word in selected_table.split('_')))
