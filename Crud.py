@@ -59,7 +59,7 @@ selected_table = st.sidebar.selectbox("Table", tables)
 
 # CRUD operations based on the selected table
 if selected_table:
-    st.title(f"{lambda s: ''.join(word.capitalize() for word in selected_table.split('_'))}").
+    st.title(' '.join(word.capitalize() for word in selected_table.split('_')))
 
     # Read
     st.subheader("Read Data")
