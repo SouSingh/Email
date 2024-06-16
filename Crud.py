@@ -24,9 +24,9 @@ with open("style.css") as f:
     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 # Get a cursor
 
-def call_fastapi_endpoints(base_url, time_string):
+def call_fastapi_endpoints(base_url, time_string, days_before):
     print(time_string)
-    response = requests.post(base_url, json={"time_string": time_string})
+    response = requests.post(base_url, json={"time_string": time_string,"days_before": days_before })
     return response.json()
 
 st.sidebar.subheader("Select Time")
@@ -36,12 +36,15 @@ hour = st.sidebar.slider("Hour", 0, 23, 12)
 minute = st.sidebar.slider("Minute", 0, 59, 0)
 second = st.sidebar.slider("Second", 0, 59, 0)
 
+days_before = st.number_input("Enter the number of Days Before the Reminder")
+
+
 # Create a time object from the user's input
 user_time = time(hour, minute, second)
 if st.sidebar.button("Send Time"):
     pas = user_time.strftime('%H:%M:%S')
-    base_url = "http://54.89.118.55:8000/time/"
-    response = call_fastapi_endpoints(base_url, pas)
+    base_url = "http://100.25.143.114:8000/time/"
+    response = call_fastapi_endpoints(base_url, pas,days_before)
 
 
 cursor = db.cursor()
@@ -56,7 +59,7 @@ selected_table = st.sidebar.selectbox("Table", tables)
 
 # CRUD operations based on the selected table
 if selected_table:
-    st.title(f"CRUD Operations for {selected_table}")
+    st.title(f"{selected_table}")
 
     # Read
     st.subheader("Read Data")
