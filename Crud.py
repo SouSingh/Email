@@ -51,11 +51,13 @@ cursor = db.cursor()
 
 # Get a list of tables
 cursor.execute("SHOW TABLES")
-tables = [table[0] for table in cursor.fetchall()]
+from itertools import chain
+
+table_names = sorted(set(chain.from_iterable(cursor.fetchall())))
 
 # Streamlit app
 st.sidebar.title("Select Table")
-selected_table = st.sidebar.selectbox("Table", [" ".join(word.split('_').capitalize() for word in tables)])
+selected_table = st.sidebar.radio("Table", [name.replace("_", " ").title() for name in table_names])
 
 # CRUD operations based on the selected table
 if selected_table:
