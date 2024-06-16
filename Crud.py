@@ -55,7 +55,7 @@ tables = [table[0] for table in cursor.fetchall()]
 
 # Streamlit app
 st.sidebar.title("Select Table")
-selected_table = st.sidebar.selectbox("Table", ' '.join(word.capitalize() for word in table.split('_')))
+selected_table = st.sidebar.selectbox("Table", ' '.join(word.capitalize() for word in tables.split('_')))
 
 # CRUD operations based on the selected table
 if selected_table:
