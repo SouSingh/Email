@@ -54,9 +54,10 @@ cursor.execute("SHOW TABLES")
 from itertools import chain
 
 tables = [table[0] for table in cursor.fetchall()]
+tables_name = [table[0] for table in cursor.fetchall()]
 # Streamlit app
 st.sidebar.title("Select Table")
-selected_table = st.sidebar.selectbox("Table", [name.replace("_", " ").title() for name in tables])
+selected_table = st.sidebar.selectbox("Table", [name.replace("_", " ").title() for name in tables_name])
 
 # CRUD operations based on the selected table
 if selected_table:
