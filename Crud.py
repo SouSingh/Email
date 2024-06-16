@@ -91,6 +91,8 @@ if selected_table:
         gone = "Documents Received from Supplier"
     if gone == 'Documents Received Tosupplier Bybuyer':
         gone = "Documents Received from Buyer"
+    if gone == 'Incharge':
+        gone = "Document Reviewer"
     st.title(gone)
     
 
