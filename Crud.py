@@ -29,6 +29,7 @@ def call_fastapi_endpoints(base_url, time_string, days_before):
     response = requests.post(base_url, json={"time_string": time_string,"days_before": days_before })
     return response.json()
 
+st.sidebar.image(add_logo(logo_path="logo.png", width=190, height=60, radius=15))
 st.sidebar.subheader("Select Time")
 
 # Get the user's time input
