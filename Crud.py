@@ -81,7 +81,7 @@ from itertools import chain
 tables = [table[0] for table in cursor.fetchall()]
 
 # Streamlit app
-st.sidebar.title("Select Table")
+st.sidebar.title("Maintain Configuration")
 selected_table = st.sidebar.selectbox("Table", tables)
 
 # CRUD operations based on the selected table
