@@ -1,7 +1,7 @@
 import streamlit as st
 import mysql.connector
 from datetime import time
-
+import pandas as pd
 import requests
 
 
@@ -62,9 +62,20 @@ if selected_table:
     st.subheader("Read Data")
     cursor.execute(f"SELECT * FROM {selected_table}")
     data = cursor.fetchall()
-    cols = [desc[0] for desc in cursor.description]
+    cols = [desc[0] for desc in cursor.description]  # Get column names
     if data:
-        st.table(data=data)
+        for i, col in enumerate(cols):
+            if col == 'BOL':
+                cols[i] = "Bill of Ladding"
+            if col == 'PFI':
+                cols[i] = "Pro Forma Invoice"
+            if col == 'Drawings':
+                cols[i] = "Drawings and Design"
+            if col == 'MQIC':
+                cols[i] = "Material Quality Inspection Certificate"
+            if col == 'LOC':
+                cols[i] = "Letter of Credits"
+        st.table(pd.DataFrame(data, columns=cols))
     else:
         st.write("No data found.")
 
@@ -73,6 +84,16 @@ if selected_table:
     cols = [desc[0] for desc in cursor.description]
     new_data = {}
     for col in cols:
+        if col == 'BOL':
+            col = "Bill of Ladding"
+        if col == 'PFI':
+            col = "Pro Forma Invoice"
+        if col == 'Drawings':
+            col = "Drawings and Design"
+        if col == 'MQIC':
+            col = "Material Quality Inspection Certificate"
+        if col == 'LOC':
+            col = "Letter of Credits"
         new_data[col] = st.text_input(f"{col}:", "")
     if st.button("Insert"):
         query = f"INSERT INTO {selected_table} ({', '.join(cols)}) VALUES ({', '.join(['%s'] * len(cols))})"
