@@ -60,9 +60,10 @@ from itertools import chain
 #selected_table = st.sidebar.selectbox("Table", [name.replace("_", " ").title() for name in tables_name])
 
 tables = [table[0] for table in cursor.fetchall()]
+
 # Streamlit app
 st.sidebar.title("Select Table")
-selectedtable = st.sidebar.selectbox("Table", tables)
+selected_table = st.sidebar.selectbox("Table", tables)
 
 # CRUD operations based on the selected table
 if selected_table:
