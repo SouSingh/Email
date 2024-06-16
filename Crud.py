@@ -13,7 +13,7 @@ db = mysql.connector.connect(
     port=3306
 )
 st.set_page_config(
-    page_title="EaseAgent Admin",
+    page_title="Automation Admin",
     page_icon="🗃️",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -55,7 +55,7 @@ tables = [table[0] for table in cursor.fetchall()]
 
 # Streamlit app
 st.sidebar.title("Select Table")
-selected_table = st.sidebar.selectbox("Table", tables)
+selected_table = st.sidebar.selectbox("Table", ' '.join(word.capitalize() for word in table.split('_')))
 
 # CRUD operations based on the selected table
 if selected_table:
