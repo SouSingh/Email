@@ -13,7 +13,7 @@ db = mysql.connector.connect(
     port=3306
 )
 st.set_page_config(
-    page_title="CRUD Operations",
+    page_title="EaseAgent Admin",
     page_icon="🗃️",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -41,7 +41,7 @@ days_before = st.sidebar.number_input("Enter the number of Days Before the Remin
 
 # Create a time object from the user's input
 user_time = time(hour, minute, second)
-if st.sidebar.button("Send Time"):
+if st.sidebar.button("Send Alert"):
     pas = user_time.strftime('%H:%M:%S')
     base_url = "http://54.165.60.17:8000/time/"
     response = call_fastapi_endpoints(base_url, pas,days_before)
@@ -59,7 +59,7 @@ selected_table = st.sidebar.selectbox("Table", tables)
 
 # CRUD operations based on the selected table
 if selected_table:
-    st.title(f"{selected_table}")
+    st.title(f"{lambda s: ''.join(word.capitalize() for word in selected_table.split('_'))}").
 
     # Read
     st.subheader("Read Data")
