@@ -82,7 +82,7 @@ tables = [table[0] for table in cursor.fetchall()]
 # Streamlit app
 st.sidebar.title("Select Table")
 selected_table = st.sidebar.selectbox("Table", tables)
-st.header("Automation Admin Portal")
+st.sidebar.markdown("Automation Admin Portal")
 # CRUD operations based on the selected table
 if selected_table:
     st.title(' '.join(word.capitalize() for word in selected_table.split('_')))
