@@ -118,7 +118,10 @@ if selected_table:
     data = [[data_mapping.get(val, val) for val in row] for row in data]
 
 # Display the table
-    st.table(pd.DataFrame(data, columns=columns))
+    #st.table(pd.DataFrame(data, columns=columns))
+    df = pd.DataFrame(data, columns=columns)
+    df.insert(0, 's.no', range(1, len(df) + 1))
+    st.table(df)
 
     # Create
     st.subheader("Create Data")
