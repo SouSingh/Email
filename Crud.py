@@ -55,7 +55,7 @@ hour = st.sidebar.slider("Hour", 0, 23, 12)
 minute = st.sidebar.slider("Minute", 0, 59, 0)
 second = st.sidebar.slider("Second", 0, 59, 0)
 
-days_before = st.sidebar.number_input("Enter the number of Days Before the Reminder", min_value=1, value=1, step=1)
+days_before = st.sidebar.number_input("Choose # of days for delivery due to send document reminder", min_value=1, value=1, step=1)
 
 
 # Create a time object from the user's input
