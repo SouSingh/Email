@@ -137,7 +137,7 @@ if selected_table:
             tempcols[i] = "Material Quality Inspection Certificate"
         if col == 'LOC':
             tempcols[i] = "Letter of Credits"
-        new_data[col] = st.text_input(f"{tempcols[i}:", "")
+        new_data[col] = st.text_input(f"{tempcols[i]}:", "")
     if st.button("Insert"):
         query = f"INSERT INTO {selected_table} ({', '.join(cols)}) VALUES ({', '.join(['%s'] * len(cols))})"
         values = tuple(new_data.values())
