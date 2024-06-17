@@ -50,12 +50,12 @@ st.sidebar.image(add_logo(logo_path="logo.png", width=190, height=60, radius=15)
 st.sidebar.markdown("# Automation Admin Portal")
 st.sidebar.subheader("Select Time")
 
+days_before = st.sidebar.number_input("Choose # of days for delivery due to send document reminder", min_value=1, value=1, step=1)
 # Get the user's time input
 hour = st.sidebar.slider("Hour", 0, 23, 12)
 minute = st.sidebar.slider("Minute", 0, 59, 0)
 second = st.sidebar.slider("Second", 0, 59, 0)
 
-days_before = st.sidebar.number_input("Choose # of days for delivery due to send document reminder", min_value=1, value=1, step=1)
 
 
 # Create a time object from the user's input
