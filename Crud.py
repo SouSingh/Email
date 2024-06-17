@@ -120,10 +120,9 @@ if selected_table:
 # Display the table
     #st.table(pd.DataFrame(data, columns=columns))
     df = pd.DataFrame(data, columns=columns)
-    df.index = df.index + 1  # To start the index from 1 instead of 0
+    df.index = df.index + 1  
     df.index.name = 's.no'
-    
-    # Display the table using Streamlit
+    df = df.reset_index()
     st.table(df)
 
     # Create
