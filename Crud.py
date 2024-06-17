@@ -123,7 +123,7 @@ if selected_table:
     df.index = df.index + 1  
     df.index.name = 's.no'
     df = df.reset_index()
-    st.table(df)
+    st.table(df[1:])
 
     # Create
     st.subheader("Create Data")
