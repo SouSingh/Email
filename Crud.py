@@ -80,9 +80,28 @@ from itertools import chain
 
 tables = [table[0] for table in cursor.fetchall()]
 table_names = [name.replace("_", " ").title() for name in tables]
+temp = []
+for gone in table_names:
+    if gone == 'Documents Received Tobuyer Bysupplier':
+        gone = "Documents Received from Supplier"
+    if gone == 'Documents Received Tosupplier Bybuyer':
+        gone = "Documents Received from Buyer"
+    if gone == 'Incharge':
+        gone = "Document Reviewer"
+    if gone == "Requestor Supplier":
+        gone = "PO Change Automation"
+    temp.append(gone)
 # Streamlit app
 st.sidebar.title("Maintain Configuration")
-selected_table = st.sidebar.selectbox("Table", table_names)
+selected_table = st.sidebar.selectbox("Table", temp)
+if selected_table == "Documents Received from Supplier":
+    selected_table = 'Documents Received Tobuyer Bysupplier'
+if selected_table == "Documents Received from Buyer":
+    selected_table ='Documents Received Tosupplier Bybuyer' 
+if selected_table == "Document Reviewer":
+    selected_table ='Incharge' 
+if selected_table ==  "PO Change Automation":
+    selected_table ="Requestor Supplier"
 selected_table = selected_table.replace(" ", "_").lower()
 
 # CRUD operations based on the selected table
