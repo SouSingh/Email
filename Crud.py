@@ -100,25 +100,26 @@ if selected_table:
     st.subheader("Read Data")
     cursor.execute(f"SELECT * FROM {selected_table}")
     data = cursor.fetchall()
-    columns = [desc[0] for desc in cursor.description]  # Get column names
+columns = [desc[0] for desc in cursor.description]  # Get column names
 
 # Dictionary to map column names
-    column_mapping = {
+column_mapping = {
     'BOL': "Bill of Ladding",
     'PFI': "Pro Forma Invoice",
     'Drawings': "Drawings and Design",
     'MQIC': "Material Quality Inspection Certificate",
-    'LOC': "Letter of Credits"}
+    'LOC': "Letter of Credits"
+}
 
 # Dictionary to map data values
-   data_mapping = {1: "Received", 0: "Not Received"}
+data_mapping = {1: "Received", 0: "Not Received"}
 
 # Replace column names and data values
-    columns = [column_mapping.get(col, col) for col in columns]
-    data = [[data_mapping.get(val, val) for val in row] for row in data]
+columns = [column_mapping.get(col, col) for col in columns]
+data = [[data_mapping.get(val, val) for val in row] for row in data]
 
 # Display the table
-    st.table(pd.DataFrame(data, columns=columns))
+st.table(pd.DataFrame(data, columns=columns))
 
     else:
         st.write("No data found.")
