@@ -62,7 +62,7 @@ second = st.sidebar.slider("Second", 0, 59, 0)
 user_time = time(hour, minute, second)
 if st.sidebar.button("Send Alert"):
     pas = user_time.strftime('%H:%M:%S')
-    base_url = "http://100.24.240.16:8000/time/"
+    base_url = "http://54.81.151.189:8000/time/"
     response = call_fastapi_endpoints(base_url, pas,days_before)
 
 
