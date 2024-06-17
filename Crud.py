@@ -120,8 +120,9 @@ if selected_table:
 # Display the table
     #st.table(pd.DataFrame(data, columns=columns))
     df = pd.DataFrame(data, columns=columns)
-    df.index = df.index + 1  
-    df.index.name = "S.No"
+    df.index = df.index + 1 
+    df.set_index('S.No', inplace=True)
+    #df.index.name = "S.No"
     st.table(df)
 
     # Create
