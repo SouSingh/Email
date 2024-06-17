@@ -62,7 +62,7 @@ days_before = st.sidebar.number_input("Enter the number of Days Before the Remin
 user_time = time(hour, minute, second)
 if st.sidebar.button("Send Alert"):
     pas = user_time.strftime('%H:%M:%S')
-    base_url = "http://54.173.90.210:8000/time/"
+    base_url = "http://100.24.240.16:8000/time/"
     response = call_fastapi_endpoints(base_url, pas,days_before)
 
 
