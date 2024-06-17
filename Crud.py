@@ -93,7 +93,7 @@ if selected_table:
         gone = "Documents Received from Buyer"
     if gone == 'Incharge':
         gone = "Document Reviewer"
-    if gone == 'Requestor Supplier":
+    if gone == "Requestor Supplier":
         gone = "PO Change Automation"
     st.title(gone)
     
