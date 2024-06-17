@@ -93,6 +93,8 @@ if selected_table:
         gone = "Documents Received from Buyer"
     if gone == 'Incharge':
         gone = "Document Reviewer"
+    if gone == 'Requestor Supplier":
+        gone = "PO Change Automation"
     st.title(gone)
     
 
@@ -145,6 +147,7 @@ if selected_table:
         new_data[col] = st.text_input(f"{tempcols[i]}:", "")
     if st.button("Insert"):
         query = f"INSERT INTO {selected_table} ({', '.join(cols)}) VALUES ({', '.join(['%s'] * len(cols))})"
+        print(query)
         values = tuple(new_data.values())
         cursor.execute(query, values)
         db.commit()
