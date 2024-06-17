@@ -60,7 +60,7 @@ second = st.sidebar.slider("Second", 0, 59, 0)
 
 # Create a time object from the user's input
 user_time = time(hour, minute, second)
-if st.sidebar.button("Send Alert"):
+if st.sidebar.button("Save Configuration"):
     pas = user_time.strftime('%H:%M:%S')
     base_url = "http://54.81.151.189:8000/time/"
     response = call_fastapi_endpoints(base_url, pas,days_before)
@@ -79,10 +79,11 @@ from itertools import chain
 #selected_table = st.sidebar.selectbox("Table", [name.replace("_", " ").title() for name in tables_name])
 
 tables = [table[0] for table in cursor.fetchall()]
-
+table_names = [name.replace("_", " ").title() for name in tables]
 # Streamlit app
 st.sidebar.title("Maintain Configuration")
-selected_table = st.sidebar.selectbox("Table", tables)
+selected_table = st.sidebar.selectbox("Table", table_names)
+selected_table = selected_table.replace(" ", "_").lower()
 
 # CRUD operations based on the selected table
 if selected_table:
