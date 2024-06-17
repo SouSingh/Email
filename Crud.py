@@ -123,6 +123,8 @@ if selected_table:
     # Create
     st.subheader("Create Data")
     cols = [desc[0] for desc in cursor.description]
+    tempcols = cols
+    # tempcols = ["Bill of Ladding","Pro Forma Invoice", "Drawings and Design",  "Material Quality Inspection Certificate"]
     new_data = {}
     for col in cols:
         if col == 'BOL':
@@ -151,7 +153,17 @@ if selected_table:
     if selected_row:
         update_data = {}
         for i, col in enumerate(cols):
-            update_data[col] = st.text_input(f"{col}:", selected_row[i])
+            if col == 'BOL':
+                tempcols[i] = "Bill of Ladding"
+            if col == 'PFI':
+                tempcols[i] = "Pro Forma Invoice"
+            if col == 'Drawings':
+                tempcols[i] = "Drawings and Design"
+            if col == 'MQIC':
+                tempcols[i] = "Material Quality Inspection Certificate"
+            if col == 'LOC':
+                tempcols[i] = "Letter of Credits"
+            update_data[col] = st.text_input(f"{tempcols[i]}:", selected_row[i])
         if st.button("Update"):
             query = f"UPDATE {selected_table} SET {', '.join([f'{col} = %s' for col in update_data.keys()])}"
             values = tuple(update_data.values())
