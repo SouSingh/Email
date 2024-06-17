@@ -120,9 +120,6 @@ if selected_table:
 # Display the table
     st.table(pd.DataFrame(data, columns=columns))
 
-    else:
-        st.write("No data found.")
-
     # Create
     st.subheader("Create Data")
     cols = [desc[0] for desc in cursor.description]
