@@ -46,7 +46,7 @@ def call_fastapi_endpoints(base_url, time_string, days_before):
     response = requests.post(base_url, json={"time_string": time_string,"days_before": days_before })
     return response.json()
 
-st.sidebar.image(add_logo(logo_path="logo.png", width=190, height=60, radius=15))
+# st.sidebar.image(add_logo(logo_path="logo.png", width=190, height=60, radius=15))
 st.sidebar.markdown("# Automation Admin Portal")
 st.sidebar.subheader("Select Day & Interval Time")
 
@@ -130,7 +130,8 @@ if selected_table:
     # Create
     st.subheader("Create Data")
     cols = [desc[0] for desc in cursor.description]
-    tempcols = cols
+
+    tempcols = cols.copy()
     # tempcols = ["Bill of Ladding","Pro Forma Invoice", "Drawings and Design",  "Material Quality Inspection Certificate"]
     new_data = {}
     for i,col in enumerate(cols):
@@ -145,9 +146,9 @@ if selected_table:
         if col == 'LOC':
             tempcols[i] = "Letter of Credits"
         new_data[col] = st.text_input(f"{tempcols[i]}:", "")
+
     if st.button("Insert"):
-        query = f"INSERT INTO {selected_table} ({', '.join(cols)}) VALUES ({', '.join(['%s'] * len(cols))})"
-        print(query)
+        query = f"INSERT INTO {selected_table} ({', '.join(new_data.keys())}) VALUES ({', '.join(['%s'] * len(cols))})"
         values = tuple(new_data.values())
         cursor.execute(query, values)
         db.commit()
@@ -161,16 +162,16 @@ if selected_table:
     if selected_row:
         update_data = {}
         for i, col in enumerate(cols):
-            if col == 'BOL':
-                tempcols[i] = "Bill of Ladding"
-            if col == 'PFI':
-                tempcols[i] = "Pro Forma Invoice"
-            if col == 'Drawings':
-                tempcols[i] = "Drawings and Design"
-            if col == 'MQIC':
-                tempcols[i] = "Material Quality Inspection Certificate"
-            if col == 'LOC':
-                tempcols[i] = "Letter of Credits"
+            # if col == 'BOL':
+            #     tempcols[i] = "Bill of Ladding"
+            # if col == 'PFI':
+            #     tempcols[i] = "Pro Forma Invoice"
+            # if col == 'Drawings':
+            #     tempcols[i] = "Drawings and Design"
+            # if col == 'MQIC':
+            #     tempcols[i] = "Material Quality Inspection Certificate"
+            # if col == 'LOC':
+            #     tempcols[i] = "Letter of Credits"
             update_data[col] = st.text_input(f"{tempcols[i]}:", selected_row[i])
         if st.button("Update"):
             query = f"UPDATE {selected_table} SET {', '.join([f'{col} = %s' for col in update_data.keys()])}"
