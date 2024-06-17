@@ -97,7 +97,7 @@ if selected_table:
     
 
     # Read
-    st.subheader("Read Data")
+    # st.subheader("Read Data")
     cursor.execute(f"SELECT * FROM {selected_table}")
     data = cursor.fetchall()
     columns = [desc[0] for desc in cursor.description]  # Get column names
@@ -126,18 +126,18 @@ if selected_table:
     tempcols = cols
     # tempcols = ["Bill of Ladding","Pro Forma Invoice", "Drawings and Design",  "Material Quality Inspection Certificate"]
     new_data = {}
-    for col in cols:
+    for i,col in enumerate(cols):
         if col == 'BOL':
-            col = "Bill of Ladding"
+            tempcols[i] = "Bill of Ladding"
         if col == 'PFI':
-            col = "Pro Forma Invoice"
+            tempcols[i] = "Pro Forma Invoice"
         if col == 'Drawings':
-            col = "Drawings and Design"
+            tempcols[i] = "Drawings and Design"
         if col == 'MQIC':
-            col = "Material Quality Inspection Certificate"
+            tempcols[i] = "Material Quality Inspection Certificate"
         if col == 'LOC':
-            col = "Letter of Credits"
-        new_data[col] = st.text_input(f"{col}:", "")
+            tempcols[i] = "Letter of Credits"
+        new_data[col] = st.text_input(f"{tempcols[i}:", "")
     if st.button("Insert"):
         query = f"INSERT INTO {selected_table} ({', '.join(cols)}) VALUES ({', '.join(['%s'] * len(cols))})"
         values = tuple(new_data.values())
