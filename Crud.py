@@ -151,6 +151,16 @@ if selected_table:
     if selected_row:
         update_data = {}
         for i, col in enumerate(cols):
+            if col == 'BOL':
+                col = "Bill of Ladding"
+            if col == 'PFI':
+                col = "Pro Forma Invoice"
+            if col == 'Drawings':
+                col = "Drawings and Design"
+            if col == 'MQIC':
+                col = "Material Quality Inspection Certificate"
+            if col == 'LOC':
+                col = "Letter of Credits"
             update_data[col] = st.text_input(f"{col}:", selected_row[i])
         if st.button("Update"):
             query = f"UPDATE {selected_table} SET {', '.join([f'{col} = %s' for col in update_data.keys()])}"
