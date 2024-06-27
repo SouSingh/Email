@@ -23,11 +23,10 @@ def add_logo(logo_path, width, height, radius):
     return rounded_logo
 
 db = mysql.connector.connect(
-    host="sql12.freesqldatabase.com",
-    user="sql12714086",
-    password="fAbSxAerrP",
-    database="sql12714086",
-    port=3306
+    host="mariadb.cjw8mm0ymwaz.us-east-1.rds.amazonaws.com",
+    user="easework",
+    password="easework12345",
+    database="easework"
 )
 st.set_page_config(
     page_title="Automation Admin",
