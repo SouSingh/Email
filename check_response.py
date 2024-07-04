@@ -7,7 +7,7 @@ def fetch_and_save_json():
     if os.path.exists('approval_response.json'):
         os.remove('approval_response.json')
  
-    response = requests.get('http://54.164.36.151:8000/get_responses')
+    response = requests.get('http://107.20.85.27:8000/get_responses')
     response.raise_for_status()
     json_data = response.json()
     with open('approval_response.json', "w") as file:
