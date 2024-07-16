@@ -44,7 +44,6 @@ def call_fastapi_endpoints(base_url, time_string, days_before):
     print(time_string)
     try:
         response = requests.post(base_url, json={"time_string": time_string,"days_before": days_before })
-        print(response)
         return response.json()
     except Exception as e:
         print("Error Response", e)
