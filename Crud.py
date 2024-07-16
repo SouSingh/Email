@@ -61,7 +61,7 @@ second = st.sidebar.slider("Second", 0, 59, 0)
 user_time = time(hour, minute, second)
 if st.sidebar.button("Save Configuration"):
     pas = user_time.strftime('%H:%M:%S')
-    base_url = "http://34.118.173.131:8000/time/"
+    base_url = "http://34.118.169.177:8000/time/"
     response = call_fastapi_endpoints(base_url, pas,days_before)
 
 
