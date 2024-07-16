@@ -42,8 +42,11 @@ with open("style.css") as f:
 
 def call_fastapi_endpoints(base_url, time_string, days_before):
     print(time_string)
-    response = requests.post(base_url, json={"time_string": time_string,"days_before": days_before })
-    return response.json()
+    try:
+        response = requests.post(base_url, json={"time_string": time_string,"days_before": days_before })
+        return response.json()
+    except Exception as e:
+        print("Error Response", e)
 
 # st.sidebar.image(add_logo(logo_path="logo.png", width=190, height=60, radius=15))
 st.sidebar.markdown("# Automation Admin Portal")
